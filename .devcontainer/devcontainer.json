@@ -1,0 +1,14 @@
+{
+    "name": "React DX Dev",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:18",
+    "postCreateCommand": "npm install",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "dbaeumer.vscode-eslint",
+          "esbenp.prettier-vscode",
+          "dsznajder.eslint-plugin-jsx"
+        ]
+      }
+    }
+  }
