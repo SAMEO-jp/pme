@@ -1,0 +1,362 @@
+.dashboard {
+  width: 100%;
+  min-height: 100vh;
+  @apply min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section {
+  @apply mb-6;
+}
+
+.sectionTitle {
+  @apply text-2xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-500 dark:from-white dark:to-gray-400;
+}
+
+.cardGrid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6;
+}
+
+.card {
+  @apply bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
+}
+
+.cardIcon {
+  @apply mb-4 p-4 rounded-2xl transition-colors;
+}
+
+.cardTitle {
+  @apply text-lg font-bold text-gray-800 dark:text-white;
+}
+
+.cardDescription {
+  @apply text-sm text-gray-500 dark:text-gray-400;
+}
+
+.footer {
+  @apply mt-12 text-center;
+}
+
+.footerText {
+  @apply text-sm text-gray-500 dark:text-gray-400;
+}
+
+.flexCenter {
+  @apply flex flex-col items-center text-center;
+}
+
+.flexRow {
+  @apply flex items-center;
+}
+
+.flexBetween {
+  @apply flex items-center justify-between;
+}
+
+.cardLink {
+  @apply inline-flex items-center text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors;
+}
+
+.cardHeader {
+  @apply flex items-center border-b dark:border-gray-700 p-6;
+}
+
+.cardContent {
+  @apply p-6;
+}
+
+.cardBorder {
+  @apply border-b dark:border-gray-700 pb-4 mb-4;
+}
+
+.cardText {
+  @apply text-sm font-medium text-gray-800 dark:text-white;
+}
+
+.cardSubText {
+  @apply text-xs text-gray-500 dark:text-gray-400;
+}
+
+.cardEmpty {
+  @apply h-64 flex items-center justify-center bg-gray-50 dark:bg-slate-700/50 rounded-xl;
+}
+
+.iconContainer {
+  @apply p-3 rounded-xl mr-4;
+}
+
+.iconContainerLarge {
+  @apply p-4 rounded-2xl mr-6;
+}
+
+.iconSmall {
+  @apply h-5 w-5;
+}
+
+.iconMedium {
+  @apply h-6 w-6;
+}
+
+.iconLarge {
+  @apply h-8 w-8;
+}
+
+.iconArrow {
+  @apply ml-2 h-4 w-4;
+}
+
+.iconArrowLarge {
+  @apply ml-auto h-5 w-5 text-gray-400;
+}
+
+.dashboardRow {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+}
+
+.leftColumn {
+  flex: 2;
+  min-width: 0;
+}
+
+.rightColumn {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cardGridLarge {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.infoBox {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 8px rgba(0,0,0,0.04);
+  border: 1px solid #f3f4f6;
+  padding: 1.5rem 1.5rem 1.2rem 1.5rem;
+  margin-bottom: 0.1rem;
+  min-height: 280px;
+}
+
+.infoBoxTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.7rem;
+  color: #222;
+}
+
+.infoBoxContent {
+  font-size: 0.98rem;
+  color: #444;
+  line-height: 1.7;
+}
+
+.infoBoxShared {
+  background: #f0f4f8;
+  border: 1.2px solid #d1d5db;
+  box-shadow: 0 2px 8px rgba(96, 165, 250, 0.06);
+}
+
+.infoBoxProject {
+  background: #f3faf7;
+  border: 1.2px solid #d1d5db;
+  box-shadow: 0 2px 8px rgba(52, 211, 153, 0.06);
+}
+
+.infoBoxWorkTime {
+  background: #fdf6e3;
+  border: 1.2px solid #d1d5db;
+  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.06);
+}
+
+.infoBoxTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+  margin-bottom: 0.7rem;
+}
+
+.infoBoxList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.infoBoxList li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 1.02rem;
+}
+.infoBoxList li:last-child {
+  border-bottom: none;
+}
+
+.projectBadge {
+  display: inline-block;
+  background: #d1fae5;
+  color: #059669;
+  border-radius: 1em;
+  padding: 0.2em 0.9em;
+  margin: 0.2em 0;
+  font-weight: 500;
+  font-size: 1.01rem;
+  box-shadow: 0 1px 4px rgba(52, 211, 153, 0.06);
+  transition: background 0.2s;
+}
+.projectBadge:hover {
+  background: #bbf7d0;
+  color: #047857;
+}
+
+.workTimeNum {
+  font-size: 2.1rem;
+  font-weight: bold;
+  color: #fbbf24;
+  margin-right: 0.5em;
+}
+
+.workTimeWarn {
+  background: #fef3c7;
+  color: #b45309;
+  border-radius: 0.5em;
+  padding: 0.5em 0.8em;
+  margin-top: 0.7em;
+  font-size: 1.01rem;
+  font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+  .dashboardRow {
+    flex-direction: column;
+  }
+  .rightColumn {
+    flex-direction: row;
+    gap: 1rem;
+    min-width: 0;
+  }
+  .infoBox {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.iconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e0e7ef 60%, #f3faf7 100%);
+  margin-right: 0.7em;
+}
+
+.projectError {
+  color: #dc2626;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #fee2e2;
+  border-radius: 0.375rem;
+}
+
+.loadingProjects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8rem;
+}
+
+.projectList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.projectTitle {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  color: #374151;
+}
+
+.noProjects {
+  color: #6b7280;
+  text-align: center;
+  padding: 1rem;
+}
+
+.projectGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.projectCard {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  transition: background-color 0.2s;
+}
+
+.projectCard:hover {
+  background-color: #f9fafb;
+}
+
+.projectHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.projectName {
+  font-weight: 500;
+  color: #111827;
+  margin: 0;
+}
+
+.projectCode {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.projectClient {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0.5rem 0;
+}
+
+.projectDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.projectRole {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 9999px;
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.projectStartDate {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+} 

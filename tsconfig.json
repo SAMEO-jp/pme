@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "target": "ES6",
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"],
+      "@project/*": ["./src/lib/project/*"],
+      "@xTabHeader/*": [
+        "app/project/detail/[projectcode]/[tab]/[content]/components/x.TabHeader/*"
+      ],
+      "@bom/*": ["./app/bom/*"],
+      "@week/*": ["./app/week-shiwake/[year]/[week]/*"],
+    },
+    "skipDefaultLibCheck": true,
+    "noErrorTruncation": true,
+    "baseUrl": "."
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

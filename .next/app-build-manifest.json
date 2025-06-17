@@ -1,0 +1,46 @@
+{
+  "pages": {
+    "/(main)/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(main)/page.css",
+      "static/chunks/app/(main)/page.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/project/home/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/project/home/page.js"
+    ],
+    "/project/projectlist/all/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/project/projectlist/all/page.js"
+    ],
+    "/project/projectlist/all/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/project/projectlist/all/loading.js"
+    ],
+    "/project/detail/[projectcode]/[tab]/[content]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/project/detail/[projectcode]/[tab]/[content]/page.js"
+    ],
+    "/project/detail/[projectcode]/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/project/detail/[projectcode]/layout.js"
+    ],
+    "/week-shiwake/[year]/[week]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/week-shiwake/[year]/[week]/page.js"
+    ]
+  }
+}

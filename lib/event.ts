@@ -1,0 +1,65 @@
+// イベントアイテムの型定義
+export interface EventItem {
+  startDateTime: string
+  endDateTime: string
+  keyID: string
+  subject: string
+  content?: string
+  projectNumber?: string
+  type?: string
+  employeeNumber: string
+  position?: string
+  facility?: string
+  status?: string
+  organizer?: string
+  businessCode?: string
+  departmentCode?: string
+  weekCode?: string
+  classification1?: string
+  classification2?: string
+  classification3?: string
+  classification4?: string
+  classification5?: string
+  classification6?: string
+  classification7?: string
+  classification8?: string
+  classification9?: string
+}
+
+// クライアント表示用のイベント型定義
+export interface ClientEvent {
+  id: string
+  keyID: string
+  title: string
+  startDateTime: string
+  endDateTime: string
+  description: string
+  project: string
+  category: string
+  color: string
+  employeeNumber: string
+  position?: string
+  facility?: string
+  status?: string
+  organizer?: string
+  top: number
+  height: number
+  unsaved?: boolean
+  businessCode?: string
+  departmentCode?: string
+  weekCode?: string
+  classification1?: string
+  classification2?: string
+  classification3?: string
+  classification4?: string
+  classification5?: string
+  classification6?: string
+  classification7?: string
+  classification8?: string
+  classification9?: string
+  activityCode?: string
+  activityRow?: string
+  activityColumn?: string
+  activitySubcode?: string
+  equipmentNumber?: string
+} 

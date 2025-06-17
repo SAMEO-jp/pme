@@ -1,0 +1,543 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../data/achievements copy.db"
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model BOM_BUZAI {
+  id           Int      @id @default(autoincrement())
+  buzai_id     String?
+  unit_weight  String?
+  quantity     String?
+  ZAISITU_name String?
+  ZARYO_name   String?
+  part_id      String?
+  Zumen_ID     String?
+
+  @@unique([buzai_id, part_id, Zumen_ID])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model BOM_PART {
+  id              Int      @id @default(autoincrement())
+  part_id         String?
+  quantity        String?
+  sub_quantity    String?
+  spare_quantity  String?
+  part_name       String?
+  remarks         String?
+  tehai_division  String?
+  tehai_id        String?
+  manufacturer    String?
+  part_project_id String?
+  zumen_id        String?
+
+  @@unique([part_id, zumen_id])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model BOM_Zume {
+  id              Int      @id @default(autoincrement())
+  Zumen_ID       String?
+  project_ID     String?
+  Zumen_Name     String?
+  Zumen_Kind     String?
+  Kumitate_Zumen String?
+  Souti_ID       String?
+  Souti_name     String?
+  rev_number     String?
+  Tantou_a1      String?
+  Tantou_a2      String?
+  Tantou_b1      String?
+  Tantou_b2      String?
+  Tantou_c1      String?
+  Tantou_c2      String?
+  status         String?
+  Syutuzubi_Date String?
+  Sakuzu_a       String?
+  Sakuzu_b       String?
+  Sakuzu_date    String?
+  Scale          String?
+  Size           String?
+  Sicret_code    String?
+  WRITEver       String?
+  KANREN_ZUMEN   String?
+
+  @@unique([Zumen_ID, project_ID])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model KONPO {
+  id         Int      @id @default(autoincrement())
+  KONPO_ID   String?
+  project_ID String?
+  weight     String?
+  HASSOU_IN  String?
+  HASSOU_TO  String?
+  IMAGE_ID   String?
+
+  @@unique([KONPO_ID, project_ID])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model KONPOU_UNIT {
+  id             Int      @id @default(autoincrement())
+  KONPOU_UNIT_ID String?
+  ZUMEN_ID       String?
+  PART_ID        String?
+  PARCENTAGE     String?
+  KONPO_ID       String?
+
+  @@unique([KONPOU_UNIT_ID, ZUMEN_ID, PART_ID, KONPO_ID])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model KONPO_LIST {
+  id         Int      @id @default(autoincrement())
+  KONPO_ID    String? @unique
+  project_ID  String
+  weight      String
+  HASSOU_IN   String
+  HASSOU_TO   String
+  IMAGE_ID    String?
+  created_at  DateTime?     @default(now())
+  updated_at  DateTime?     @default(now())
+  KONPO_TANNI KONPO_TANNI[] @relation("KONPO_LIST_TO_TANNI")
+
+  @@unique([KONPO_ID, project_ID])
+  @@index([project_ID], map: "idx_konpo_list_project_id")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model KONPO_TANNI {
+  id           Int      @id @default(autoincrement())
+  KONPO_UNIT_ID String?
+  ZUMEN_ID      String
+  PART_ID       String
+  PARCENTAGE    String
+  KONPO_ID      String?
+  created_at    DateTime?  @default(now())
+  updated_at    DateTime?  @default(now())
+  konpoList KONPO_LIST? @relation("KONPO_LIST_TO_TANNI", fields: [KONPO_ID], references: [KONPO_ID])
+
+  @@unique([KONPO_UNIT_ID, ZUMEN_ID, PART_ID, KONPO_ID])
+  @@index([PART_ID], map: "idx_konpo_tanni_part_id")
+  @@index([ZUMEN_ID], map: "idx_konpo_tanni_zumen_id")
+  @@index([KONPO_ID], map: "idx_konpo_tanni_konpo_id")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Zumen {
+  id              Int      @id @default(autoincrement())
+  project_id      String?
+  Zumen_id        String?
+  Zumen_name      String?
+  Zumen_kind      String?
+  Kumitate_id     String?
+  Kanren_zumen_id String?
+  Setubi_name     String?
+  rev             String?
+  user_a1         String?
+  user_a2         String?
+  user_b1         String?
+  user_b2         String?
+  user_c1         String?
+  user_c2         String?
+  status          String?
+  date_syutsu     String?
+  draw_user_a     String?
+  draw_user_b     String?
+  date_draw       String?
+  scale           String?
+  size            String?
+  Syuhi           String?
+  WRITE_ver       String?
+
+  @@unique([project_id, Zumen_id])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Zumen_old {
+  id              Int      @id @default(autoincrement())
+  project_id      String?
+  Zumen_id        String?
+  Zumen_name      String?
+  Zumen_kind      String?
+  Kumitate_id     String?
+  Kanren_zumen_id String?
+  Setubi_name     String?
+  rev             String?
+  user_a1         String?
+  user_a2         String?
+  user_b1         String?
+  user_b2         String?
+  user_c1         String?
+  user_c2         String?
+  status          String?
+  date_syutsu     String?
+  draw_user_a     String?
+  draw_user_b     String?
+  date_draw       String?
+  scale           String?
+  size            String?
+  Syuhi           String?
+  WRITE_ver       String?
+
+  @@unique([project_id, Zumen_id])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Zumen_old2 {
+  id              Int      @id @default(autoincrement())
+  project_id      String?
+  Zumen_id        String?
+  Zumen_name      String?
+  Zumen_kind      String?
+  Kumitate_id     String?
+  Kanren_zumen_id String?
+  Setubi_name     String?
+  rev             String?
+  user_a1         String?
+  user_a2         String?
+  user_b1         String?
+  user_b2         String?
+  user_c1         String?
+  user_c2         String?
+  status          String?
+  date_syutsu     String?
+  draw_user_a     String?
+  draw_user_b     String?
+  date_draw       String?
+  scale           String?
+  size            String?
+  Syuhi           String?
+  WRITE_ver       String?
+
+  @@unique([project_id, Zumen_id])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model all_department {
+  id                    Int      @id @default(autoincrement())
+  name                  String?
+  ver_name              String?
+  start_date            String?
+  end_date              String?
+  department_kind       String?
+  top_department        String?
+  relational_department String?
+
+  @@unique([name, ver_name])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model all_user {
+  id           Int      @id @default(autoincrement())
+  user_id      String?
+  name_japanese String?
+  TEL          String?
+  mail         String?
+  name_english String?
+  name_yomi    String?
+  company      String?
+  bumon        String?
+  in_year      String?
+  Kengen       String?
+  TEL_naisen   String?
+  sitsu        String?
+  ka           String?
+  syokui       String?
+
+  @@unique([user_id])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model all_user_temp_pkchg {
+  id           Int      @id @default(autoincrement())
+  user_id      String?
+  name_japanese String?
+  TEL          String?
+  mail         String?
+  name_english String?
+  name_yomi    String?
+  company      String?
+  bumon        String?
+  in_year      String?
+  Kengen       String?
+  TEL_naisen   String?
+  sitsu        String?
+  ka           String?
+  syokui       String?
+
+  @@unique([user_id])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model app_settings {
+  id          Int      @id @default(autoincrement())
+  key         String?
+  value       String?
+  description String?
+
+  @@unique([key])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model bumon {
+  id                    Int      @id @default(autoincrement())
+  name                  String?
+  ver_name              String?
+  start_date            String?
+  end_date              String?
+  department_kind       String?
+  top_department        String?
+  relational_department String?
+
+  @@unique([name, ver_name])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model bumon_history {
+  id         Int      @id @default(autoincrement())
+  bumon_id   String?
+  user_id    String?
+  start_date String?
+  end_date   String?
+
+  @@unique([bumon_id, user_id, start_date])
+}
+
+model bumon_member_history {
+  id         Int      @id @default(autoincrement())
+  bumon_id   String?
+  user_id    String?
+  start_date String?
+  end_date   String?
+
+  @@unique([bumon_id, user_id, start_date])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model d_culum_style {
+  id          Int      @id @default(autoincrement())
+  style_id    String?
+  style_name  String?
+  description String?
+
+  @@unique([style_id])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model d_datakind {
+  id          Int      @id @default(autoincrement())
+  kind_id     String?
+  kind_name   String?
+
+  @@unique([kind_id])
+}
+
+model departments {
+  id                    Int      @id @default(autoincrement())
+  name                  String?
+  ver_name              String?
+  start_date            String?
+  end_date              String?
+  department_kind       String?
+  top_department        String?
+  relational_department String?
+
+  @@unique([name, ver_name])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model employees {
+  id           Int      @id @default(autoincrement())
+  employee_id  String?
+  name         String?
+  department   String?
+  position     String?
+
+  @@unique([employee_id])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model m_activity_types {
+  id          Int      @id @default(autoincrement())
+  type_id     String?
+  type_name   String?
+  description String?
+  color       String?
+
+  @@unique([type_id])
+}
+
+model m_kintai {
+  id           Int      @id @default(autoincrement())
+  user_id      String?
+  date         String?
+  start_time   String?
+  end_time     String?
+  break_time   String?
+  work_time    String?
+
+  @@unique([user_id, date])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model main_Zisseki {
+  id              Int      @id @default(autoincrement())
+  project_id      String?
+  Zumen_id        String?
+  Zumen_name      String?
+  Zumen_kind      String?
+  Kumitate_id     String?
+  Kanren_zumen_id String?
+  Setubi_name     String?
+  rev             String?
+  user_a1         String?
+  user_a2         String?
+  user_b1         String?
+  user_b2         String?
+  user_c1         String?
+  user_c2         String?
+  status          String?
+  date_syutsu     String?
+  draw_user_a     String?
+  draw_user_b     String?
+  date_draw       String?
+  scale           String?
+  size            String?
+  Syuhi           String?
+  WRITE_ver       String?
+
+  @@unique([project_id, Zumen_id])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model prant_B_id {
+  id          Int      @id @default(autoincrement())
+  project_id  String?
+  B_id        String?
+  B_name      String?
+
+  @@unique([project_id, B_id])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model project {
+  id              Int      @id @default(autoincrement())
+  project_number  String?
+  project_name    String?
+  start_date      String?
+  end_date        String?
+  status          String?
+
+  @@unique([project_number])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model project_equipment {
+  id          Int      @id @default(autoincrement())
+  project_id  String?
+  equipment_id String?
+  name        String?
+  quantity    String?
+
+  @@unique([project_id, equipment_id])
+}
+
+model project_item {
+  id          Int      @id @default(autoincrement())
+  project_id  String?
+  item_id     String?
+  name        String?
+  quantity    String?
+  unit        String?
+  price       String?
+  total       String?
+  remarks     String?
+
+  @@unique([project_id, item_id])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model project_member_histories {
+  id         Int      @id @default(autoincrement())
+  project_id String?
+  user_id    String?
+  start_date String?
+  end_date   String?
+
+  @@unique([project_id, user_id, start_date])
+}
+
+model project_purchase_items {
+  id          Int      @id @default(autoincrement())
+  project_id  String?
+  item_id     String?
+  name        String?
+  quantity    String?
+  unit        String?
+  price       String?
+  total       String?
+  remarks     String?
+
+  @@unique([project_id, item_id])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model project_purchase_items_old {
+  id          Int      @id @default(autoincrement())
+  project_id  String?
+  item_id     String?
+  name        String?
+  quantity    String?
+  unit        String?
+  price       String?
+  total       String?
+  remarks     String?
+
+  @@unique([project_id, item_id])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model project_setubi_ID {
+  id          Int      @id @default(autoincrement())
+  project_id  String?
+  setubi_id   String?
+  setubi_name String?
+
+  @@unique([project_id, setubi_id])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model project_ticket {
+  id          Int      @id @default(autoincrement())
+  project_id  String?
+  ticket_id   String?
+  title       String?
+  description String?
+  status      String?
+  priority    String?
+  assignee    String?
+  created_at  String?
+  updated_at  String?
+
+  @@unique([project_id, ticket_id])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model projects {
+  id              Int      @id @default(autoincrement())
+  project_number  String?
+  project_name    String?
+  start_date      String?
+  end_date        String?
+  status          String?
+
+  @@unique([project_number])
+}

@@ -1,0 +1,61 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 梱包単位作成アプリケーション
+
+## 概要
+梱包単位を作成するためのアプリケーションです。
+
+## 機能
+- 梱包単位の新規作成
+- 梱包単位の編集
+- 梱包単位の削除
+- 梱包単位の一覧表示
+
+## 画面構成
+1. 梱包単位情報入力フォーム
+   - 梱包単位名
+   - 数量
+   - 重量
+   - 備考
+
+2. 梱包単位一覧
+   - 梱包単位ID
+   - 梱包単位名
+   - 数量
+   - 重量
+   - 備考
+
+3. 操作ボタン
+   - 新規作成
+   - 編集
+   - 削除
+   - 保存
+   - キャンセル
+
+## データ構造
+```typescript
+interface PackagingUnit {
+  UNIT_ID: string;
+  PROJECT_ID: string;
+  UNIT_NAME: string;
+  QUANTITY: number;
+  WEIGHT: number;
+  REMARKS: string;
+  CREATED_AT: string;
+  UPDATED_AT: string;
+}
+```
+
+## API
+- GET /api/bom/{projectNumber}/packaging/unit
+  - 梱包単位一覧の取得
+- POST /api/bom/{projectNumber}/packaging/unit
+  - 梱包単位の新規作成
+- PUT /api/bom/{projectNumber}/packaging/unit/{unitId}
+  - 梱包単位の更新
+- DELETE /api/bom/{projectNumber}/packaging/unit/{unitId}
+  - 梱包単位の削除
+

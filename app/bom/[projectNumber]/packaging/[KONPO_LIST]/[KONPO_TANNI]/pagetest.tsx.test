@@ -1,0 +1,33 @@
+
+// import { useEffect, useState } from 'react';
+// import { useParams } from 'next/navigation';
+
+// export default function KonpoTanniWeightPage() {
+//   const params = useParams();
+//   const [zensuKo, setZensuKo] = useState<string | null>(null);
+//   const [error, setError] = useState<string | null>(null);
+
+//   useEffect(() => {
+//     const fetchZensuKo = async () => {
+//       try {
+//         const res = await fetch(`/api/bom/${params.projectNumber}/packaging/${params.KONPO_LIST}/${params.KONPO_TANNI}`);
+//         const data = await res.json();
+//         if (data.zensu_ko) {
+//           setZensuKo(data.zensu_ko);
+//         } else {
+//           setError(data.error || 'データ取得失敗');
+//         }
+//       } catch (e) {
+//         setError('API通信エラー');
+//       }
+//     };
+//     fetchZensuKo();
+//   }, [params.projectNumber, params.KONPO_LIST, params.KONPO_TANNI]);
+
+//   return (
+//     <div>
+//       <h2>梱包単位重量</h2>
+//       {error ? <div style={{color:'red'}}>{error}</div> : <div>{zensuKo ? `${zensuKo} kg` : '読込中...'}</div>}
+//     </div>
+//   );
+// }

@@ -1,0 +1,238 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# フォルダ構造ルール
+
+## プロジェクトの基本構造
+```
+project-root/
+├── app/                    # Next.js 13+ のApp Router構造
+│   ├── (main)/            # メインアプリケーションルート
+│   │   ├── sample/     # こんな形でアプリを増やす。
+│   │   │   ├── components/     
+│   │   │   ├── layouts/       
+│   │   │   └── page.tsx      
+│   │   ├── components/   # 共通コンポーネント（メイン配下）
+│   │   ├── layouts/      # 共通レイアウト（メイン配下）
+│   │   └── page.tsx      # メインページ
+│   └── api/              # APIルート
+│       ├── auth/         # 認証関連API
+│       ├── master/       # マスタ関連API
+│       ├── workflow/     # ワークフロー関連API
+│       └── report/       # レポート関連API
+├── src/                  # ソースコードのメインディレクトリ
+│   ├── component/        # 共通コンポーネント
+│   │   ├── ui/          # 基本UIコンポーネント
+│   │   ├── features/    # 機能別コンポーネント
+│   │   └── business/    # 業務ロジックコンポーネント
+│   ├── lib/             # ユーティリティ関数、ヘルパー
+│   │   ├── utils/       # 汎用ユーティリティ
+│   │   ├── api/         # APIクライアント
+│   │   ├── auth/        # 認証関連
+│   │   └── business/    # 業務ロジック
+│   ├── hooks/           # カスタムフック
+│   │   ├── common/      # 共通フック
+│   │   └── business/    # 業務ロジックフック
+│   ├── types/           # TypeScript型定義
+│   │   ├── api/         # API型定義
+│   │   ├── business/    # 業務ロジック型定義
+│   │   └── common/      # 共通型定義
+│   ├── styles/          # グローバルスタイル
+│   │   ├── theme/       # テーマ設定
+│   │   └── components/  # コンポーネントスタイル
+│   ├── public/          # 静的ファイル
+│   │   ├── images/      # 画像ファイル
+│   │   └── icons/       # アイコンファイル
+│   └── tmp/             # 一時ファイル
+├── data/                # データベース関連
+│   ├── migrations/      # マイグレーションファイル
+│   ├── seeds/          # シードデータ
+│   └── achievements.db  # SQLiteデータベース
+└── config/             # 設定ファイル
+    ├── env/            # 環境変数設定
+    └── business/       # 業務設定
+```
+
+## アプリケーションの構成ルール
+
+### 1. メインアプリケーション（app/(main)/）
+各業務アプリケーションは独立したディレクトリとして配置
+- 命名規則: `kebab-case`
+- 例: `dashboard/`, `master/`, `workflow/`
+
+### 2. 各アプリケーションの内部構造
+```
+app-name/
+├── components/     # アプリケーション固有のコンポーネント
+├── layouts/        # アプリケーション固有のレイアウト
+├── hooks/          # アプリケーション固有のフック
+├── types/          # アプリケーション固有の型定義
+├── utils/          # アプリケーション固有のユーティリティ
+└── page.tsx        # メインページ
+```
+
+### 3. コンポーネントの配置ルール
+1. 共通コンポーネント
+   - 全アプリで使用: `src/component/`
+   - メイン配下で使用: `app/(main)/components/`
+   - アプリ固有: `app/(main)/[app-name]/components/`
+
+2. レイアウトコンポーネント
+   - 全アプリで使用: `src/component/layouts/`
+   - メイン配下で使用: `app/(main)/layouts/`
+   - アプリ固有: `app/(main)/[app-name]/layouts/`
+
+### 4. APIの構成ルール
+1. エンドポイントの構造
+   - 認証関連: `/api/auth/`
+   - マスタ関連: `/api/master/`
+   - ワークフロー関連: `/api/workflow/`
+   - レポート関連: `/api/report/`
+
+2. APIハンドラーの配置
+   - 認証: `app/api/auth/`
+   - マスタ: `app/api/master/`
+   - ワークフロー: `app/api/workflow/`
+   - レポート: `app/api/report/`
+
+### 5. データベース関連のルール
+1. マイグレーションファイル
+   - 命名規則: `YYYYMMDD-description.sql`
+   - 配置場所: `data/migrations/`
+
+2. シードデータ
+   - 命名規則: `[table-name]-seed.sql`
+   - 配置場所: `data/seeds/`
+
+### 6. 型定義のルール
+1. 共通型定義
+   - 配置場所: `src/types/common/`
+   - 命名規則: `PascalCase.d.ts`
+
+2. 業務ロジック型定義
+   - 配置場所: `src/types/business/`
+   - 命名規則: `[feature]-types.d.ts`
+
+3. API型定義
+   - 配置場所: `src/types/api/`
+   - 命名規則: `[endpoint]-types.d.ts`
+
+### 7. スタイルのルール
+1. グローバルスタイル
+   - 配置場所: `src/styles/`
+   - 命名規則: `kebab-case.css`
+
+2. コンポーネントスタイル
+   - 配置場所: `src/styles/components/`
+   - 命名規則: `[component-name].css`
+
+3. テーマ設定
+   - 配置場所: `src/styles/theme/`
+   - 命名規則: `[theme-name].css`
+
+### 8. テストのルール
+1. ユニットテスト
+   - 配置場所: `__tests__/unit/`
+   - 命名規則: `[component-name].test.tsx`
+
+2. 統合テスト
+   - 配置場所: `__tests__/integration/`
+   - 命名規則: `[feature-name].test.tsx`
+
+3. E2Eテスト
+   - 配置場所: `__tests__/e2e/`
+   - 命名規則: `[scenario-name].test.tsx`
+
+### 9. 設定ファイルのルール
+1. 環境変数
+   - 配置場所: `config/env/`
+   - 命名規則: `.env.[environment]`
+
+2. 業務設定
+   - 配置場所: `config/business/`
+   - 命名規則: `[feature]-config.ts`
+
+### 10. インポートパスの規則
+1. 絶対パス
+   - 共通コンポーネント: `@/src/component/`
+   - アプリ固有コンポーネント: `@/app/(main)/[app-name]/components/`
+   - ユーティリティ: `@/src/lib/utils/`
+   - 型定義: `@/src/types/`
+
+2. 相対パス
+   - 同一ディレクトリ内: `./`
+   - 親ディレクトリ: `../`
+   - 2階層上: `../../`
+
+## ディレクトリの役割と命名規則
+
+### app/ ディレクトリ
+- Next.js 13+のApp Routerを使用
+- ページコンポーネントは`page.tsx`
+- レイアウトは`layout.tsx`
+- ローディング状態は`loading.tsx`
+- エラー処理は`error.tsx`
+
+### src/ ディレクトリ
+- `component/`: 共通コンポーネント
+  - 命名規則: `PascalCase.tsx`
+  - 例: `Button.tsx`, `Input.tsx`
+- `lib/`: ユーティリティ関数
+  - 命名規則: `camelCase.ts`
+  - 例: `formatDate.ts`, `validateInput.ts`
+- `hooks/`: カスタムフック
+  - 命名規則: `useFeatureName.ts`
+  - 例: `useAuth.ts`, `useForm.ts`
+- `types/`: 型定義
+  - 命名規則: `PascalCase.d.ts`
+  - 例: `User.d.ts`, `ApiResponse.d.ts`
+- `styles/`: グローバルスタイル
+  - 命名規則: `kebab-case.css`
+  - 例: `global.css`, `theme.css`
+- `public/`: 静的アセット
+  - 命名規則: `kebab-case.extension`
+  - 例: `logo.svg`, `hero-image.jpg`
+- `tmp/`: 一時ファイル
+  - 開発中の一時的なファイルを格納
+
+### data/ ディレクトリ
+- データベース関連ファイル
+- 命名規則: `kebab-case.sql`
+- 例: `initial-schema.sql`, `seed-data.sql`
+
+## ファイル命名の一般的なルール
+- コンポーネント: `PascalCase.tsx`
+- ユーティリティ: `camelCase.ts`
+- スタイル: `kebab-case.css`
+- 型定義: `PascalCase.d.ts`
+
+## コンポーネントの配置ルール
+1. 共通コンポーネントは `src/component/` に配置
+2. ページ固有のコンポーネントは `app/(main)/components/` に配置
+3. レイアウトコンポーネントは `app/(main)/layouts/` に配置
+
+## データベース関連のルール
+1. データベースファイルは `data/` ディレクトリに配置
+2. マイグレーションファイルは `data/migrations/` に配置
+3. シードデータは `data/seeds/` に配置
+
+## スタイルのルール
+1. グローバルスタイルは `src/styles/` に配置
+2. コンポーネント固有のスタイルは該当コンポーネントと同じディレクトリに配置
+3. テーマ設定は `src/styles/theme/` に配置
+
+## 型定義のルール
+1. 共通の型定義は `src/types/` に配置
+2. コンポーネント固有の型定義は該当コンポーネントと同じディレクトリに配置
+3. APIレスポンスの型定義は `src/types/api/` に配置
+
+## テストのルール
+1. テストファイルは `__tests__` ディレクトリに配置
+2. テストファイルの命名規則: `ComponentName.test.tsx`
+3. テストユーティリティは `src/lib/test-utils/` に配置
+
+
+
+

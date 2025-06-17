@@ -1,0 +1,180 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# z_datamanagement システム概要
+
+## 1. システム構成
+
+### ディレクトリ構造
+```
+app/z_datamanagement/
+├── main/           # メイン機能
+├── table_view/     # テーブル表示機能
+├── column_config/  # カラム設定機能
+├── other/          # その他機能
+└── components/     # 共通コンポーネント
+    ├── ui/         # UIコンポーネント
+    └── layout/     # レイアウトコンポーネント
+```
+
+## 2. 主要API一覧
+
+### テーブル管理API
+```
+GET /api/z_datamanagement/tables
+- テーブル一覧取得
+- レスポンス: { tables: TableInfo[] }
+
+POST /api/z_datamanagement/create_table
+- テーブル作成
+- リクエスト: { tableName: string, columns: any[] }
+```
+
+### カラム設定API
+```
+GET /api/z_datamanagement/column_config
+- カラム設定取得
+- クエリ: ?table={tableName}
+- レスポンス: { tables: { tableName: string, columns: ColumnConfig[] }[] }
+
+POST /api/z_datamanagement/column_config
+- カラム設定更新
+- リクエスト: {
+    tableName: string,
+    columnName: string,
+    displayName: string,
+    isKey: boolean,
+    columnType: string
+  }
+
+POST /api/z_datamanagement/column_config/set_primary_key
+- 主キー設定
+- リクエスト: { tableName: string, columnName: string }
+```
+
+### データ操作API
+```
+GET /api/z_datamanagement/table_data
+- テーブルデータ取得
+- クエリ: ?table={tableName}&limit={limit}
+
+POST /api/z_datamanagement/table_data
+- データ追加
+- リクエスト: Record<string, any>
+
+DELETE /api/z_datamanagement/table_data
+- データ削除
+- クエリ: ?table={tableName}&all={boolean}
+- リクエスト: { keys: any[] }
+```
+
+### CSV操作API
+```
+GET /api/z_datamanagement/column_config/csv
+- カラム設定CSVダウンロード
+- クエリ: ?table={tableName}&encoding={encoding}
+
+POST /api/z_datamanagement/column_config/csv
+- カラム設定CSVインポート
+- リクエスト: FormData (file: File, options: ImportOptions)
+
+POST /api/z_datamanagement/table_data/csv
+- テーブルデータCSVインポート
+- クエリ: ?table={tableName}
+- リクエスト: FormData (file: File, options: ImportOptions)
+```
+
+### データベース管理API
+```
+POST /api/z_datamanagement/create_database
+- データベース作成
+- リクエスト: { databaseName: string }
+```
+
+## 3. 主要コンポーネント
+
+### UIコンポーネント
+- `LoadingSpinner`: ローディング表示
+- `DataCard`: データ表示カード
+- `CsvImportModal`: CSVインポートモーダル
+- `AddRecordModal`: レコード追加モーダル
+- `TableViewGrid`: テーブル表示グリッド
+
+### レイアウトコンポーネント
+- `Sidebar`: サイドバーナビゲーション
+- `TableViewWrapper`: テーブル表示ラッパー
+
+## 4. 主要機能
+
+### メイン機能
+- テーブル一覧表示
+- テーブル作成
+- テーブル検索・フィルタリング
+- テーブルソート
+
+### テーブル表示機能
+- テーブルデータ表示
+- データ編集
+- データ削除
+- CSVインポート/エクスポート
+
+### カラム設定機能
+- カラム設定表示
+- カラム追加/編集
+- 主キー設定
+- CSVインポート/エクスポート
+
+### その他機能
+- データベース作成
+- データベース情報表示
+- データエクスポート
+- データインポート
+- バックアップ管理
+- SQL実行
+
+## 5. データ型定義
+
+### 主要インターフェース
+```typescript
+interface ColumnConfig {
+  columnName: string;
+  displayName: string;
+  isKey: boolean;
+  columnType: string;
+}
+
+interface ImportStats {
+  inserted: number;
+  updated: number;
+  skipped: number;
+}
+
+interface ImportOptions {
+  noDuplicates: boolean;
+  createNewTable: boolean;
+  encoding: string;
+}
+```
+
+## 6. システム概要
+
+このシステムは、データベースのテーブル管理、カラム設定、データ操作、CSVインポート/エクスポートなどの機能を提供する包括的なデータ管理システムです。
+
+### 主な特徴
+- Next.jsとTypeScriptを使用したモダンな実装
+- 直感的なUI/UXデザイン
+- 効率的なAPI設計
+- 包括的なデータ管理機能
+- CSVインポート/エクスポート機能
+- 柔軟なカラム設定
+- データベース管理機能
+
+### 技術スタック
+- フロントエンド: Next.js, TypeScript, React
+- UI: Tailwind CSS
+- データベース: SQLite (achievements.db)
+- API: Next.js API Routes
+
+

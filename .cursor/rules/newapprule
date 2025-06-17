@@ -1,0 +1,263 @@
+# アプリケーション構造ルール
+
+<アプリ名>
+{{app_name}}
+</アプリ名>
+
+## 1. ディレクトリ構造
+  ```
+  app/
+  ├── api/
+  │   └── {{app_name}}/
+  ├── {{app_name}}/
+  │   ├── components/
+  │   ├── hooks/
+  │   ├── styles/
+  │   ├── types/
+  │   ├── utils/
+  │   └── __tests__/
+  └── ...
+  ```
+
+## 2. パスエイリアス設定
+- 各アプリケーションの `tsconfig.json` に以下のパスエイリアスを設定
+  ```json
+  {
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@{{app_name}}/*": ["./app/{{app_name}}/*"]
+      }
+    }
+  }
+  ```
+
+## 3. API構造
+- APIエンドポイントは `app/api/{{app_name}}/` の下に配置
+- 動的ルーティングが必要な場合は、`app/api/{{app_name}}/[機能名]/[動的パラメータ名]/` の形式で作成
+  - 例: `app/api/{{app_name}}/parts/[partId]/route.ts`
+  - 例: `app/api/{{app_name}}/assembly/[assemblyId]/route.ts`
+- APIファイルは `route.ts` として作成
+
+## 4. ページ構造
+- メインページは `app/{{app_name}}/page.tsx` に配置
+- その他のページは適切な名前のフォルダを作成し、その中に `page.tsx` を配置
+- 動的ルーティングのページは `app/{{app_name}}/[機能名]/[動的パラメータ名]/page.tsx` の形式で作成
+  - 例: `app/{{app_name}}/parts/[partId]/page.tsx`
+  - 例: `app/{{app_name}}/assembly/[assemblyId]/page.tsx`
+- ページの型定義は `app/{{app_name}}/types/` の下に配置
+  - 例: `app/{{app_name}}/types/parts.ts`
+  - 例: `app/{{app_name}}/types/assembly.ts`
+
+## 5. コンポーネントとフック
+- 共通UIコンポーネント（ボタン、フォーム、カードなど）は `app/{{app_name}}/components/` の下に配置
+  - 例: `app/{{app_name}}/components/Button.tsx`
+  - 例: `app/{{app_name}}/components/Form.tsx`
+- 機能固有のコンポーネントは `app/{{app_name}}/components/[機能名]/` の下に配置
+  - 例: `app/{{app_name}}/components/parts/PartList.tsx`
+- フックは `app/{{app_name}}/hooks/` の下に配置
+  - 例: `app/{{app_name}}/hooks/useAuth.ts`
+  - 例: `app/{{app_name}}/hooks/useData.ts`
+
+## 6. 型定義
+- 型定義は `app/{{app_name}}/types/` の下に配置
+  - 例: `app/{{app_name}}/types/user.ts`
+  - 例: `app/{{app_name}}/types/api.ts`
+- インターフェースや型は適切なファイル名で管理
+- ページ固有の型定義は `app/{{app_name}}/types/pages/` の下に配置
+  - 例: `app/{{app_name}}/types/pages/parts.ts`
+  - 例: `app/{{app_name}}/types/pages/assembly.ts`
+
+## 7. ユーティリティ関数とライブラリ
+- ユーティリティ関数は `app/{{app_name}}/utils/` の下に配置
+  - 例: `app/{{app_name}}/utils/utils.ts`
+  - 例: `app/{{app_name}}/utils/format.ts`
+  
+- APIとの通信に関する関数は `app/{{app_name}}/utils/api/` の下に配置
+  - 例: `app/{{app_name}}/utils/api/parts.ts`
+  - 例: `app/{{app_name}}/utils/api/assembly.ts`
+
+## 8. スタイル
+- スタイルファイルは `app/{{app_name}}/styles/` の下に配置
+  - 例: `app/{{app_name}}/styles/global.css`
+  - 例: `app/{{app_name}}/styles/theme.css`
+- コンポーネント固有のスタイルは該当コンポーネントと同じディレクトリに配置
+  - 例: `app/{{app_name}}/components/Button/Button.module.css`
+- スタイル定数は `app/{{app_name}}/styles/constants/` の下に配置
+  - 例: `app/{{app_name}}/styles/constants/colors.ts`
+  - 例: `app/{{app_name}}/styles/constants/typography.ts`
+
+## 9. 命名規則
+- ファイル名はキャメルケース（例: `partList.tsx`）
+- コンポーネント名はパスカルケース（例: `PartList`）
+- フォルダ名はケバブケース（例: `part-list`）
+
+## 10. インポート規則
+- アプリケーション内のインポートは、設定したパスエイリアスを使用
+  ```typescript
+  // 良い例
+  import { Button } from '@{{app_name}}/components/Button';
+  import { useAuth } from '@{{app_name}}/hooks/useAuth';
+  import { fetchData } from '@{{app_name}}/utils/api/fetchData';
+  import { UserType } from '@{{app_name}}/types/user';
+  
+  // 避けるべき例
+  import { Button } from '@/components/{{app_name}}/Button';
+  import { useAuth } from '../../../hooks/useAuth';
+  ```
+- 相対パスは極力使用しない。
+- アプリケーション間の依存関係は明示的に管理
+
+## 11. コードスタイル
+- TypeScriptの厳格な型チェックを有効化
+- ESLintとPrettierの設定に従う
+- コンポーネントは関数コンポーネントを使用
+- Propsの型定義は明示的に行う
+- ページコンポーネントは以下の構造に従う：
+  ```typescript
+  // 型定義のインポート
+  import { PageProps } from '../types/page.ts';
+  
+  // フックのインポート
+  import { usePageHook } from '../hooks/usePageHook.ts';
+  
+  // ライブラリのインポート
+  import { fetchData } from '../utils/api/fetchData.ts';
+  
+  // スタイルのインポート
+  import '../styles/page.css';
+  ```
+
+## 12. テスト
+- テストファイルは `app/{{app_name}}/__tests__/` フォルダに配置
+  - 例: `app/{{app_name}}/__tests__/components/Button.test.tsx`
+  - 例: `app/{{app_name}}/__tests__/hooks/useAuth.test.ts`
+- テストファイル名は `.test.ts` または `.test.tsx` で終わる
+- コンポーネントのテストは該当コンポーネントと同じディレクトリに配置
+
+## 13. コード分離の原則
+- ページコンポーネントは可能な限りシンプルに保ち、ロジックは適切な場所に分離
+- データフェッチングは `utils/api` に分離
+- 状態管理は `hooks` に分離
+- スタイリングは `styles` に分離
+- 型定義は `types` に分離
+- 再利用可能なコンポーネントは `components` に分離
+
+## 14. コンポーネント作成の原則
+- 共通UIコンポーネントは必ず `app/{{app_name}}/components/` に配置
+- コンポーネントは単一責任の原則に従う
+- コンポーネントのPropsは明示的な型定義を持つ
+- コンポーネントは可能な限り再利用可能に設計
+- コンポーネントのスタイルは可能な限りモジュール化
+
+## 15. スタイル定義の原則
+- スタイル定数は `app/{{app_name}}/styles/constants/` の下に配置
+  - 例: `app/{{app_name}}/styles/constants/colors.ts`
+  - 例: `app/{{app_name}}/styles/constants/typography.ts`
+  - 例: `app/{{app_name}}/styles/constants/layout.ts`
+- スタイル定数の命名規則
+  - 定数名は大文字のスネークケース
+  - 用途を明確に示す接尾辞（_STYLE, _COLOR, _SIZE など）を使用
+  ```typescript
+  // 良い例
+  export const TITLE_STYLE = "text-2xl font-bold";
+  export const HEADER_BG_GRADIENT = "bg-gradient-to-r from-blue-600 to-blue-500";
+  export const BUTTON_PRIMARY_COLOR = "bg-blue-500 hover:bg-blue-600";
+  
+  // 避けるべき例
+  export const title = "text-2xl font-bold";
+  export const headerBg = "bg-gradient-to-r from-blue-600 to-blue-500";
+  ```
+- スタイルの分類
+  - レイアウト関連: `layout.ts`
+  - タイポグラフィ: `typography.ts`
+  - カラー: `colors.ts`
+  - アニメーション: `animations.ts`
+  - コンポーネント固有: `components/` の下に配置
+
+## 16. ドキュメント作成の原則
+- 各アプリケーションのルートに `README.md` を作成
+- ドキュメントの構成
+  ```markdown
+  # {{app_name}} アプリケーション
+
+  ## 概要
+  - アプリケーションの目的
+  - 主要機能
+  - 技術スタック
+
+  ## ディレクトリ構造
+  ```
+  app/
+  ├── api/
+  │   └── {{app_name}}/
+  ├── {{app_name}}/
+  │   ├── components/
+  │   ├── hooks/
+  │   ├── styles/
+  │   ├── types/
+  │   ├── utils/
+  │   └── __tests__/
+  └── ...
+  ```
+
+  ## パスエイリアス
+  | エイリアス | パス | 用途 |
+  |------------|------|------|
+  | @{{app_name}}/* | ./app/{{app_name}}/* | アプリケーションのルート |
+
+  ## 定義済みスタイル
+  ### レイアウト
+  | 定数名 | 値 | 用途 |
+  |--------|-----|------|
+  | HEADER_GRID | "w-full px-0 py-4 grid grid-cols-[auto,1fr,auto]" | ヘッダーのグリッドレイアウト |
+  | ... | ... | ... |
+
+  ### タイポグラフィ
+  | 定数名 | 値 | 用途 |
+  |--------|-----|------|
+  | TITLE_STYLE | "text-2xl font-bold" | タイトルテキスト |
+  | ... | ... | ... |
+
+  ## 定義済み変数
+  ### 状態管理
+  | 変数名 | 型 | 用途 |
+  |--------|-----|------|
+  | userState | UserState | ユーザー情報の状態 |
+  | ... | ... | ... |
+
+  ## APIエンドポイント
+  | エンドポイント | メソッド | 用途 |
+  |--------------|----------|------|
+  | /api/{{app_name}}/users | GET | ユーザー一覧の取得 |
+  | ... | ... | ... |
+
+  ## コンポーネント
+  ### 共通コンポーネント
+  | コンポーネント名 | 用途 | 主要なProps |
+  |----------------|------|------------|
+  | Button | ボタンコンポーネント | variant, size, onClick |
+  | ... | ... | ... |
+
+  ## 開発ガイドライン
+  - コーディング規約
+  - テスト方針
+  - デプロイメントフロー
+  ```
+- ドキュメントの更新
+  - 新しいスタイル定数や変数を追加した際は、README.mdを更新
+  - コンポーネントを追加した際は、ドキュメントに追記
+  - APIエンドポイントを追加した際は、ドキュメントに追記
+
+## 17. 開発フロー
+- 新機能開発時
+  1. 機能の要件定義
+  2. 必要なコンポーネントの特定
+  3. スタイル定数の定義
+  4. コンポーネントの実装
+  5. ドキュメントの更新
+- バグ修正時
+  1. 問題の特定
+  2. 修正方針の決定
+  3. 修正の実装
+  4. ドキュメントの更新（必要な場合）

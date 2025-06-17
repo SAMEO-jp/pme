@@ -1,0 +1,21 @@
+export interface BOMItem {
+  id: string;
+  partNumber: string;
+  description: string;
+  quantity: number;
+  unit: string;
+  status: 'active' | 'inactive' | 'pending';
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface BOMFilter {
+  search: string;
+  status: 'all' | 'active' | 'inactive' | 'pending';
+  dateRange: {
+    start: Date | null;
+    end: Date | null;
+  };
+}
+
+export type BOMType = BOMItem[]; 

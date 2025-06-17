@@ -1,0 +1,80 @@
+# ローカルストレージデータ仕様書
+
+## 1. ユーザー情報 (currentUser)
+ユーザーの基本情報を保持するデータ
+
+### キー名
+- `currentUser`
+
+### データ構造
+```typescript
+interface AllUser {
+  user_id: string;        // ユーザーID
+  name_japanese: string;  // 日本語名
+  TEL: string;           // 電話番号
+  mail: string;          // メールアドレス
+  name_english: string;  // 英語名
+  name_yomi: string;     // 読み仮名
+  company: string;       // 会社名
+  bumon: string;         // 部門名
+  in_year: string;       // 入社年
+  Kengen: string;        // 権限レベル
+  TEL_naisen: string;    // 内線番号
+  sitsu: string;         // 室名
+  ka: string;           // 課名
+  syokui: string;       // 職位
+}
+```
+
+### 更新タイミング
+- アプリケーション初回起動時
+- ユーザーログイン時
+- ユーザー切り替え時
+
+## 2. プロジェクト情報 (currentUser_projects)
+ユーザーが所属するプロジェクト情報を保持するデータ（isProject = "1"のもののみ）
+
+### キー名
+- `currentUser_projects`
+
+### データ構造
+```typescript
+interface Project {
+  projectNumber: string;  // プロジェクト番号
+  projectName: string;    // プロジェクト名
+  isProject: string;      // プロジェクト種別（"1": プロジェクト）
+  // その他のプロジェクト関連情報
+}
+```
+
+### 更新タイミング
+- ユーザー情報更新時
+- プロジェクト情報の変更時
+
+## 3. タイムスタンプ情報
+各データの最終更新時刻を保持するデータ
+
+### キー名
+- `currentUser_dateInfo`: ユーザー情報の最終更新時刻と日付情報
+- `currentUser_projects_timestamp`: プロジェクト情報の最終更新時刻
+
+### データ構造
+```typescript
+interface DateInfo {
+  timestamp: number;  // UNIXタイムスタンプ
+  week: number;      // ISO週番号
+  year: number;      // 年
+  month: number;     // 月（1-12）
+  day: number;       // 日（1-31）
+}
+```
+
+### 更新タイミング
+- 各データの更新時に同時に更新
+
+## 注意事項
+1. すべてのデータはJSON形式で保存されます
+2. データが存在しない場合は、デフォルト値が設定されます
+3. エラー発生時は、デフォルト値が返されます
+4. タイムスタンプは、データの鮮度を確認するために使用されます
+5. プロジェクト情報は、isProject = "1"のもののみを保存します

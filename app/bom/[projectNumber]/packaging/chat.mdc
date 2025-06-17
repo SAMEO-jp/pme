@@ -1,0 +1,44 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# チャットでの会話内容
+
+## 2024-03-21
+
+### ユーザーからの要望
+1. app\bom\[projectNumber]\packaging\page.tsx
+の梱包単位情報反映ボタンと、それに関する機能を削除して。
+
+新たに、梱包ユニットというボタンを作って、それを押したら、したの階層の/unitに行けるようにして。
+
+2. 新規リスト作成ボタンも消して。あと、app\bom\[projectNumber]\packaging\unit\makeと。app\bom\[projectNumber]\packaging\unit\listmakeも消して。
+
+3. listmake.mdc　makeapp.mdc　はもとに戻して
+
+4. このチャットでお願いしたことをapp\bom\[projectNumber]\packaging\chat.mdcここに記載してしてほしい。
+
+### 実行結果
+- 梱包単位情報反映ボタンとその機能を削除
+- 梱包ユニットボタンを新規作成し、/unitへのナビゲーションを実装
+- 新規リスト作成ボタンを削除
+- app\bom\[projectNumber]\packaging\unit\makeとapp\bom\[projectNumber]\packaging\unit\listmakeディレクトリを削除
+- listmake.mdcとmakeapp.mdcを元の状態に復元
+- チャットの内容をchat.mdcに記録
+
+## 2024-03-21（続き）
+
+### ユーザーからの要望
+フロントエンドアプリケーションの修正を依頼：
+1. KONPO_TANNIテーブルから特定のカラム（PART_TANNI_WEIGHTを含む）を表示するように修正
+2. 複数アイテムを選択するためのチェックボックス機能の追加
+3. KONPO_LIST_IDの登録機能の実装
+
+### 実行結果
+- SQLクエリの修正を実施
+- フロントエンドの更新を実施
+- APIの取得と表示機能の実装
+
+
+

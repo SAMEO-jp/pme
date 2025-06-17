@@ -1,0 +1,16 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+このプロジェクトは、PMEデータHUB業務基幹システムです。
+
+基本的なURLの場所を明記します。
+
+・プロジェクト詳細ページ
+
+＞プロジェクト詳細ぺージのURLは、『{root}/project/detail/{プロジェクト番号}/overview/main』となっています。
+＞ユーザー詳細ページのURLは、『{root}/user/detail/{ユーザー番号}/overview/main』となっています。
+
+
+＞app/layout.tsxには<body>を記述しないでください。

@@ -1,0 +1,399 @@
+{
+  "main": {
+    "id": "9276369a792f3415",
+    "type": "split",
+    "children": [
+      {
+        "id": "ee0e424248d3931b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fbc53de50f8b8169",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "グラフビュー"
+            }
+          },
+          {
+            "id": "33445a196285b3f9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "在庫管理.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "在庫管理"
+            }
+          },
+          {
+            "id": "a433c3acb6942196",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "無題のファイル.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "無題のファイル"
+            }
+          },
+          {
+            "id": "a0709bc6143121f9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "bom/03 部品テーブル（BOM_PART）.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "03 部品テーブル（BOM_PART）"
+            }
+          },
+          {
+            "id": "1641a5276b1c31ba",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "bom/01 図面テーブル（BOM_ZUMEN）.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "01 図面テーブル（BOM_ZUMEN）"
+            }
+          },
+          {
+            "id": "a351b292844b8eb8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "API整理.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "API整理"
+            }
+          },
+          {
+            "id": "be59471a7d067939",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "bom/03 部品テーブル（BOM_PART）.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "03 部品テーブル（BOM_PART）"
+            }
+          },
+          {
+            "id": "5d8570c81a7001f1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "bom/梱包単位（KONPO_TANNI).md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "梱包単位（KONPO_TANNI)"
+            }
+          },
+          {
+            "id": "57aa97a2382416f5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "bom/02 部材テーブル（BOM_BUZAI）.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "02 部材テーブル（BOM_BUZAI）"
+            }
+          },
+          {
+            "id": "8692192d46c6de73",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "bom/梱包単位（KONPO_TANNI).md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "梱包単位（KONPO_TANNI)"
+            }
+          },
+          {
+            "id": "1e0afe05049ce273",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PROJECT／BOM.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "PROJECT／BOM"
+            }
+          },
+          {
+            "id": "299e71a82b1faeed",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "BP/BPメモ.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "BPメモ"
+            }
+          },
+          {
+            "id": "d13a7bacd34e6bd8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "要素技術MAP会議/2025年6月17日.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2025年6月17日"
+            }
+          },
+          {
+            "id": "cd27473e5d6e85e6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "無題のフォルダ 1/chat gpt ソフト開発初期段階のアドバイス.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "chat gpt ソフト開発初期段階のアドバイス"
+            }
+          },
+          {
+            "id": "9ef5b023cdc49fad",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "無題のフォルダ 1/chat gpt ソフト開発初期段階のアドバイス2.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "chat gpt ソフト開発初期段階のアドバイス2"
+            }
+          }
+        ],
+        "currentTab": 14
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "12d42d9dedc381f8",
+    "type": "split",
+    "children": [
+      {
+        "id": "1eb87f4704491bb9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5e0794b6d8dc6a4c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": true
+              },
+              "icon": "lucide-folder-closed",
+              "title": "ファイルエクスプローラ"
+            }
+          },
+          {
+            "id": "d1cbc5f3a09932ae",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#table",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "検索"
+            }
+          },
+          {
+            "id": "55abde66bc8674ff",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "ブックマーク"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 349.5019836425781
+  },
+  "right": {
+    "id": "8df1e60c67a4fb35",
+    "type": "split",
+    "children": [
+      {
+        "id": "a5d62cea4752c4ab",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "727090d54252312a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "バックリンク"
+            }
+          },
+          {
+            "id": "eacabc2499ae6b35",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "アウトゴーイングリンク"
+            }
+          },
+          {
+            "id": "2a14b52b47e9889a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "タグ"
+            }
+          },
+          {
+            "id": "d48957d4196114c5",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "アウトライン"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:クイックスイッチャーを開く": false,
+      "graph:グラフビューを開く": false,
+      "canvas:新規キャンバスを作成": false,
+      "daily-notes:今日のデイリーノートを開く": false,
+      "templates:テンプレートを挿入": false,
+      "command-palette:コマンドパレットを開く": false
+    }
+  },
+  "active": "9ef5b023cdc49fad",
+  "lastOpenFiles": [
+    "無題のフォルダ 1/chat gpt ソフト開発初期段階のアドバイス.md",
+    "無題のフォルダ 1/chat gpt ソフト開発初期段階のアドバイス2.md",
+    "無題のフォルダ 1/2025年度　DX進め方方針.md",
+    "BP/Pasted image 20250617101557.png",
+    "無題のフォルダ 1/chat gpt ソフト開発初期段階のアドバイス",
+    "2025年度　DX進め方方針.md",
+    "要素技術MAP会議/2025年6月17日.md",
+    "Pasted image 20250617154501.png",
+    "bom/03 部品テーブル（BOM_PART）.md",
+    "bom/梱包単位（KONPO_TANNI).md",
+    "BP/BPメモ.md",
+    "要素技術MAP会議_",
+    "要素技術MAP会議",
+    "PROJECT／BOM.md",
+    "bom/梱包リスト（KONPO_LIST）.md",
+    "bom/02 部材テーブル（BOM_BUZAI）.md",
+    "bom/01 図面テーブル（BOM_ZUMEN）.md",
+    "bom/製造組立／組込テーブル.md",
+    "API整理.md",
+    "正規化の範囲.md",
+    "無題のファイル.canvas",
+    "JOIN.md",
+    "BOMの運用.md",
+    "在庫管理.md",
+    "2025-06-09.md",
+    "無題のフォルダ 1",
+    "BP",
+    "INDUSTRIAL ELECTROSTATIC.md",
+    "image_url.md",
+    "bom/図面データ.md",
+    "プロジェクト_図面データ.md",
+    "PMESYSTEM.md",
+    "bom",
+    "梱包管理.md",
+    "BOM.md"
+  ]
+}

@@ -1,0 +1,71 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 梱包リスト作成
+
+## 概要
+梱包リストを作成するための機能です。
+
+## 機能
+- 梱包リストの新規作成
+- 梱包単位の追加
+- 梱包単位の編集
+- 梱包単位の削除
+- 梱包リストの保存
+
+## 画面構成
+1. 梱包リスト情報入力フォーム
+   - リスト名
+   - 備考
+   - 作成日時
+
+2. 梱包単位一覧
+   - 梱包単位ID
+   - 梱包単位名
+   - 数量
+   - 重量
+   - 備考
+
+3. 操作ボタン
+   - 梱包単位追加
+   - 梱包単位編集
+   - 梱包単位削除
+   - 保存
+   - キャンセル
+
+## データ構造
+```typescript
+interface PackagingList {
+  KONPO_LIST_ID: string;
+  PROJECT_ID: string;
+  LIST_NAME: string;
+  REMARKS: string;
+  CREATED_AT: string;
+  UNITS: PackagingUnit[];
+}
+
+interface PackagingUnit {
+  UNIT_ID: string;
+  UNIT_NAME: string;
+  QUANTITY: number;
+  WEIGHT: number;
+  REMARKS: string;
+}
+```
+
+## API
+- POST /api/bom/{projectNumber}/packaging/list
+  - 梱包リストの新規作成
+- PUT /api/bom/{projectNumber}/packaging/list/{listId}
+  - 梱包リストの更新
+- DELETE /api/bom/{projectNumber}/packaging/list/{listId}
+  - 梱包リストの削除
+- POST /api/bom/{projectNumber}/packaging/list/{listId}/unit
+  - 梱包単位の追加
+- PUT /api/bom/{projectNumber}/packaging/list/{listId}/unit/{unitId}
+  - 梱包単位の更新
+- DELETE /api/bom/{projectNumber}/packaging/list/{listId}/unit/{unitId}
+  - 梱包単位の削除
+
